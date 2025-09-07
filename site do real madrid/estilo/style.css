@@ -1,0 +1,384 @@
+@charset "UTF-8";
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-bottom: 0.5px solid rgb(27, 49, 83);
+    position: sticky;
+    z-index: 100;
+    top: 0;
+}
+
+header > div > h1 {
+    margin: 10px;
+}
+
+header > div {
+    display: flex;
+}
+
+header > div > img, abbr {
+    margin: 10px;
+    width: 30px;
+    height: 25px;
+}
+
+abbr:active{
+  border:1px solid rgb(27, 49, 83);
+}
+
+nav{
+    background-color: rgb(27, 49, 83);
+    width: 200px;
+    position:absolute;
+    display: none;
+}
+
+nav > ul {
+    list-style-type: none;
+    padding: 20px;
+}
+
+nav > ul > li{
+    margin: 20px 0px;
+    padding-right: 10px;
+}
+
+nav > ul > li > a{
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 14pt;
+}
+
+nav > ul > li > a:hover{
+  border-radius: 20px;
+  font-weight: bold;
+  border: 1px solid rgb(30, 70, 131);
+  padding: 5px;
+}
+
+.on{
+  border-radius: 20px;
+  font-weight: bold;
+  background-color:  rgb(30, 70, 131);
+  padding: 5px;
+}
+
+h1, h2, h3{
+  text-align: center;
+}
+
+.first > div {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin: 20px 0px;
+}
+
+.first > div > p{
+  margin: 10px;
+  text-align: justify;
+}
+
+.first > div > table,td{
+  padding: 10px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  max-width: 70%;
+}
+
+tr:hover{
+  background-color:rgba(30, 70, 131, 0.329) ;
+}
+
+.first > div > img{
+  margin-bottom:10px ;
+    max-width: 80%;
+    max-height: 90vh;
+    border-radius: 20px;
+}
+
+.fotos{
+  background-color: rgb(27, 49, 83);
+}
+
+.be{
+  background-color: rgb(27, 49, 83);
+  color: white;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+}
+
+.madrid > div{
+  margin: 20px 0px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.madrid > div > img{
+  margin-bottom:10px;
+  max-width: 80%;
+  border-radius: 20px;
+}
+
+article.back{
+  background:url('../imagens/madrid.jpg') center;
+  background-size:cover;
+  background-attachment: fixed;
+  box-shadow: inset 6px 6px 13px 0px rgba(0, 0, 0, 0.507);
+  width: 100%;
+  height: 400px;
+}
+
+.bern{
+  background:url('../imagens/bernabeu.jpg') center;
+  background-size:cover;
+  background-attachment: fixed;
+  box-shadow: inset 6px 6px 13px 0px rgba(0, 0, 0, 0.507);
+  width: 100%;
+  height: 400px;
+}
+
+.imh{
+  background:url('../imagens/IMG21.jpg') center;
+  background-size:cover;
+  background-attachment: fixed;
+  box-shadow: inset 6px 6px 13px 0px rgba(0, 0, 0, 0.507);
+  width: 100%;
+  height: 400px;
+}
+
+.im{
+  background:url('../imagens/IMG22.jpg') center;
+  background-size:cover;
+  background-attachment: fixed;
+  box-shadow: inset 6px 6px 13px 0px rgba(0, 0, 0, 0.507);
+  width: 100%;
+  height: 400px;
+}
+
+.news > div {
+  margin: 20px 0px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.news > div > img{
+  margin-bottom:10px;
+  max-width: 80%;
+  border-radius: 20px;
+}
+.rolate{
+  margin: 20px;
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+}
+
+.rolate > div{
+  margin: 10px;
+}
+.rolate > div > img{
+  margin-bottom:10px;
+  max-width: 380px;
+  border-radius: 20px;
+}
+.cup{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.trag{
+  color: black;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+}
+.escada{
+  max-width: 50%;
+  max-height: 60vh;
+  border-radius: 20px;
+}
+
+.container{
+  margin-inline-start: 15px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.container > div{
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.container > div:hover{
+  background-color: rgba(30, 70, 131, 0.329);
+  border-radius: 5px;
+}
+
+.container > div > h3{
+  margin-inline-end: 8px;
+}
+
+.kit{
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  gap: 20px;
+}
+.kit > div{
+  margin: 10px;
+}
+.kit > div > img{
+  max-width: 300px;
+  border-radius: 20px;
+}
+
+footer {
+  padding: 15px;
+  background-color: rgb(27, 49, 83);
+  color: white;
+  text-align: center;
+}
+
+
+/*Animações*/
+
+.scale-in-hor-left {
+    -webkit-animation: scale-in-hor-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: scale-in-hor-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+   
+    @-webkit-keyframes scale-in-hor-left {
+      0% {
+        -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+        -webkit-transform-origin: 0% 0%;
+                transform-origin: 0% 0%;
+        opacity: 1;
+      }
+      100% {
+        -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+        -webkit-transform-origin: 0% 0%;
+                transform-origin: 0% 0%;
+        opacity: 1;
+      }
+    }
+    @keyframes scale-in-hor-left {
+      0% {
+        -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+        -webkit-transform-origin: 0% 0%;
+                transform-origin: 0% 0%;
+        opacity: 1;
+      }
+      100% {
+        -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+        -webkit-transform-origin: 0% 0%;
+                transform-origin: 0% 0%;
+        opacity: 1;
+      }
+    }    
+
+
+
+    .heartbeat {
+      -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+              animation: heartbeat 1.5s ease-in-out infinite both;
+      }
+    
+      @-webkit-keyframes heartbeat {
+        from {
+          -webkit-transform: scale(1);
+                  transform: scale(1);
+          -webkit-transform-origin: center center;
+                  transform-origin: center center;
+          -webkit-animation-timing-function: ease-out;
+                  animation-timing-function: ease-out;
+        }
+        10% {
+          -webkit-transform: scale(0.91);
+                  transform: scale(0.91);
+          -webkit-animation-timing-function: ease-in;
+                  animation-timing-function: ease-in;
+        }
+        17% {
+          -webkit-transform: scale(0.98);
+                  transform: scale(0.98);
+          -webkit-animation-timing-function: ease-out;
+                  animation-timing-function: ease-out;
+        }
+        33% {
+          -webkit-transform: scale(0.87);
+                  transform: scale(0.87);
+          -webkit-animation-timing-function: ease-in;
+                  animation-timing-function: ease-in;
+        }
+        45% {
+          -webkit-transform: scale(1);
+                  transform: scale(1);
+          -webkit-animation-timing-function: ease-out;
+                  animation-timing-function: ease-out;
+        }
+      }
+      @keyframes heartbeat {
+        from {
+          -webkit-transform: scale(1);
+                  transform: scale(1);
+          -webkit-transform-origin: center center;
+                  transform-origin: center center;
+          -webkit-animation-timing-function: ease-out;
+                  animation-timing-function: ease-out;
+        }
+        10% {
+          -webkit-transform: scale(0.91);
+                  transform: scale(0.91);
+          -webkit-animation-timing-function: ease-in;
+                  animation-timing-function: ease-in;
+        }
+        17% {
+          -webkit-transform: scale(0.98);
+                  transform: scale(0.98);
+          -webkit-animation-timing-function: ease-out;
+                  animation-timing-function: ease-out;
+        }
+        33% {
+          -webkit-transform: scale(0.87);
+                  transform: scale(0.87);
+          -webkit-animation-timing-function: ease-in;
+                  animation-timing-function: ease-in;
+        }
+        45% {
+          -webkit-transform: scale(1);
+                  transform: scale(1);
+          -webkit-animation-timing-function: ease-out;
+                  animation-timing-function: ease-out;
+        }
+      }      
+
+
+
+     

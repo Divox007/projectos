@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Reservas</title>
+  <link rel="stylesheet" href="estilo/style.css">
+   <link rel="shortcut icon" href="imagens/logo.png">
+    <style>
+      body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #CC092F;
+    border-bottom: 2px solid #CC092F;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
+.form-section {
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.checkbox-group label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input {
+    margin-right: 8px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #27ae60;
+}
+
+.pdf-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.pdf-btn:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+#pdfContent {
+    padding: 20px;
+    background: white;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+#pdfContent h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+#pdfData p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+#pdfData strong {
+    color: #2c3e50;
+}
+
+ .video-fundo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    </style>
+</head>
+<body>
+      <header>
+        <div class="logo"> <img src="imagens/logo.png" class="heartbeat"> Angola<span>Turismo</span></div>
+        <p>Descubra as belezas deste país extraordinário</p>
+        <div class="icon">
+          <img id="menu" src="imagens/menu.svg">
+        </div>
+        <div class="contain">
+        <nav id="itens" class="scale-in-tr">
+        <a href="index.html">Início</a>
+        <a href="prov.html">Províncias</a>
+        <a href="destaque.html">Destaques</a>
+        <a href="reserva.html">Reservas</a>
+        </nav>
+        </div>
+    </header>
+<section id="contato">
+  
+  <!-- Vídeo de fundo -->
+  <video class="video-fundo" autoplay muted loop playsinline>
+    <source src="imagens/fall.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo em HTML5.
+  </video>
+        <h2 class="tracking-in-expand-fwd-top">Planeje Sua Viagem</h2>
+        <p>Entre em contato para mais informações sobre pacotes turísticos em Angola.</p>
+      
+    <div class="container">
+        <h1 >Formulário de Interesse Turístico</h1>
+        <p>Preencha este formulário para receber recomendações personalizadas de viagem.</p>
+        
+        <form id="tourForm">
+            <div class="form-section">
+                <h2>Informações Pessoais</h2>
+                <div class="form-group">
+                    <label for="name">Nome Completo:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Telefone:</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="country">País de Origem:</label>
+                    <input type="text" id="country" name="country" required>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Preferências de Viagem</h2>
+                
+                <div class="form-group">
+                    <label for="destination">Destino de Interesse:</label>
+                    <select id="destination" name="destination">
+                      <option value="select" selected="">Selecione um local</option>
+                <option value="não selcionado">Bengo</option>
+                <option value="Benguela">Benguela</option>
+                <option value="Bié">Bié</option>
+                <option value="Cabinda">Cabinda</option>
+                <option value="Cuando" >Cuando</option>
+                <option value="Cubango">Cubano</option>
+                <option value="Cuanza Norte">Cuanza Norte</option>
+                <option value="Cuanza Sul">Cuanza Sul</option>
+                <option value="Cunene">Cunene</option>
+                <option value="Huambo">Huambo</option>
+                <option value="Huíla">Huíla</option>
+                <option value="Icolo e Bengo">Icolo e Bengo</option>
+                <option value="Lunda Norte">Lunda-Norte</option>
+                <option value="Luanda" >Luanda</option>
+                <option value="Lunda Sul">Lunda Sul</option>
+                <option value="Malanje">Malanje</option>
+                <option value="Moxico" >Moxico</option>
+                <option value="Moxico Leste" >Moxico Leste</option>
+                <option value="Namibe" >Namibe</option>
+                <option value="Uíge">Uíge</option>
+                <option value="Zaire">Zaire</option>
+            </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="travel-date">Data Prevista para Viagem:</label>
+                    <input type="date" id="travel-date" name="travel-date">
+                </div>
+                
+                <div class="form-group">
+                    <label for="duration">Duração da Viagem:</label>
+                    <select id="duration" name="duration">
+                        <option value="1 semana">1 semana</option>
+                        <option value="2 semanas">2 semanas</option>
+                        <option value="Três semanas">3 semanas</option>
+                        <option value="1 mês">1 mês</option>
+                        <option value="Mais de u1 mês">Mais de 1 mês</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Interesses (marque todos que aplicar):</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="interests" value="cultura"> Cultura e História</label>
+                        <label><input type="checkbox" name="interests" value="natureza"> Natureza e Aventura</label>
+                        <label><input type="checkbox" name="interests" value="praias"> Praias</label>
+                        <label><input type="checkbox" name="interests" value="gastronomia"> Gastronomia</label>
+                        <label><input type="checkbox" name="interests" value="compras"> Compras</label>
+                        <label><input type="checkbox" name="interests" value="noite"> Vida Noturna</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget">Orçamento Aproximado:</label>
+                    <select id="budget" name="budget">
+                        <option value="economico">Econômico (até 300.000kz)</option>
+                        <option value="medio">Médio (300.000kz - 500.000kz)</option>
+                        <option value="alto">Alto (500.000kz- 600.000kz)</option>
+                        <option value="luxo">Luxo (700.000kz)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Informações Adicionais</h2>
+                
+                <div class="form-group">
+                    <label for="companions">Número de Acompanhantes:</label>
+                    <input type="number" id="companions" name="companions" min="0" max="20">
+                </div>
+                
+                <div class="form-group">
+                    <label for="accommodation">Tipo de Acomodação Preferida:</label>
+                    <select id="accommodation" name="accommodation">
+                        <option value="hotel">Hotel</option>
+                        <option value="hostel">Hostel</option>
+                        <option value="apartamento">Apartamento/Airbnb</option>
+                        <option value="resort">Resort</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="special-requirements">Requisitos Especiais:</label>
+                    <textarea id="special-requirements" name="special-requirements" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="how-found">Como nos encontrou?</label>
+                    <select id="how-found" name="how-found">
+                        <option value="google">Google</option>
+                        <option value="redes-sociais">Redes Sociais</option>
+                        <option value="indicacao">Indicação</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn submit-btn">Enviar Formulário</button>
+            </div>
+        </form>
+    </div>
+    
+    </section>
+    <script src='script.js' >
+    
+    </script>
+</body>
+</html>

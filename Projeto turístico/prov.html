@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="shortcut icon" href="imagens/logo.png">
+  <title>Províncias</title>
+  <style>
+      :root {
+            --vermelho: #CC092F;
+            --preto: #000000;
+            --amarelo: #FFCB00;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+          background-color: rgb(161, 140, 72);
+            color: white;
+            padding: 1rem 0;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header > div{
+          color:black;
+          text-align: center;
+        }
+        
+        header > div.logo > img{
+          width: 50px;
+          height: 45px;
+        }
+        
+        header > p{
+          text-align: center;
+          margin-bottom: 10px;
+          color: black;
+        }
+        
+        header > .icon{
+          margin-right: 20px;
+          display:flex;
+          justify-content:flex-end;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo span {
+            color: var(--amarelo);
+        }
+        
+        .contain{
+          display: flex;
+          justify-content: flex-end;
+        }
+        #menu{
+          width: 45px;
+          height: 35px;
+        }
+        
+        nav {
+            display:none;
+            padding: 10px;
+            width: 170px;
+            height: 250px;
+            position:absolute;
+            background-color: var(--preto);
+            z-index: 100;
+        }
+        
+        nav a {
+            display: block;
+            color: var(--amarelo);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.5em;
+            padding: 5px;
+            margin: 5px;
+            margin-block: 17px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: var(--vermelho);
+            color: var(--amarelo);
+        }
+        
+        h2 {
+            color: var(--vermelho);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--amarelo);
+            margin: 0.5rem auto;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 30px auto;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 450px;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .slide:hover .slide-content {
+            transform: translateY(0);
+        }
+
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.5);
+            color: #333;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-prev {
+            left: 20px;
+        }
+
+        .btn-next {
+            right: 20px;
+        }
+
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .dot:hover {
+            background: white;
+        }
+
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            width: 0%;
+            transition: width 0.1s linear;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .slider {
+                height: 350px;
+            }
+            
+            .slide-content {
+                padding: 20px 15px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+      <header>
+        <div class="logo"> <img src="imagens/logo.png" class="heartbeat"> Angola<span>Turismo</span></div>
+        <p>Descubra as belezas deste país extraordinário</p>
+        <div class="icon">
+          <img id="menu" src="imagens/menu.svg">
+        </div>
+        <div class="contain">
+        <nav id="itens" class="scale-in-tr">
+        <a href="index.html">Início</a>
+        <a href="prov.html">Províncias</a>
+        <a href="destaque.html">Destaques</a>
+        <a href="reserva.html">Reservas</a>
+        </nav>
+        </div>
+    </header>
+     <section id="provincias">
+        <h2 class="tracking-in-expand-fwd-top">Províncias de Angola</h2>
+        <p>Angola está dividida em 21 províncias, cada uma com suas características únicas e belezas naturais.</p>
+        <div style="text-align:center;">
+          <img style="max-width:70vw;" src="imagens/pro.jpg">
+          <a href="mais/Divisao-Politica.pdf" target="_blank">Ver PDF</a>
+        </div>
+            <!-- Primeiro Slider -->
+    <div class="slider-container" id="slider1">
+      <h2>Bengo</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/barradodande.jpg" alt="Natureza 1">
+                <div class="slide-content">
+                    <h3>Barra do Dande</h3>
+                    <p>Localizada na foz do Rio Dande, a Barra do Dande é uma zona costeira conhecida por suas praias tranquilas, pesca artesanal e importância histórica.  </p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/santaana.jpg" alt="Natureza 2">
+                <div class="slide-content">
+                    <h3>Igreja da Santa Ana</h3>
+                    <p>Localizada no município de Dande, a Igreja de Santa Ana é um importante marco histórico e religioso, construída durante o período colonial. Representa um legado da arquitetura missionária e da evangelização em Angola, sendo um local de peregrinação e devoção para muitos fiéis.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+
+    <!-- Segundo Slider -->
+    <div class="slider-container" id="slider2">
+      <h2>Benguela</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/arrabida.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Capela Nossa Senhora da Arrábia</h3>
+                    <p>Situada num ponto elevado de Benguela, a Capela de Nossa Senhora da Arrábida é um local histórico e religioso que oferece uma vista panorâmica sobre a cidade e a costa. Construída durante o período colonial, é um ponto de peregrinação e contemplação, com importância cultural e espiritual para a comunidade local.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/baiaazul.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Baia Azul</h3>
+                    <p>A Baía Azul é uma das praias mais famosas e deslumbrantes de Benguela. Conhecida pelas suas águas calmas e cristalinas, areia branca e falésias que emolduram a paisagem, é um destino popular tanto para turistas como para moradores. Ideal para banhos, passeios de barco e relaxamento.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/caotinha.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Praia da Caotinha</h3>
+                    <p>Mais reservada e menos movimentada, a Praia da Caotinha é uma pequena enseada de grande beleza natural. Suas águas tranquilas e o ambiente mais íntimo fazem dela um local procurado para descanso, mergulho e pesca artesanal. É ideal para quem busca tranquilidade à beira-mar.</p>
+                </div>
+            </div> 
+            <div class="slide">
+                <img src="imagens/morena.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Praia Morena</h3>
+                    <p>Localizada junto ao centro urbano de Benguela, a Praia Morena é uma praia urbana movimentada, com um ambiente vibrante. É muito frequentada por famílias e jovens, com opções de bares e restaurantes nas proximidades. Também recebe eventos culturais e desportivos ao longo do ano.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+        </div>
+    </div>
+    
+    <!-- Terceiro Slider -->
+    <div class="slider-container" id="slider3">
+      <h2>Bié</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/luando.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Quedas do Luando</h3>
+                    <p>As Quedas do Luando são um conjunto de impressionantes cascatas situadas no rio Luando, também na província do Bié. Rodeadas por vegetação exuberante, estas quedas oferecem uma paisagem natural deslumbrante e são ideais para os amantes da natureza e do ecoturismo.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/silvaporto.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Estátua Silva Porto</h3>
+                    <p>Localizada na cidade do Cuito, capital da província do Bié, a estátua homenageia António da Silva Porto, um explorador e comerciante português do século XIX que teve grande influência na região central de Angola. A estátua é um marco histórico importante e reflete o passado colonial da cidade, sendo um ponto de referência cultural e turística.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            
+        </div>
+    </div>
+    
+    <!-- quarto Slider -->
+    <div class="slider-container" id="slider4">
+      <h2>Cabinda</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/simulanbuco.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Marco Histórico do Tratado de simulambuco</h3>
+                    <p>Símbolo da história colonial angolana, este marco assinala o local onde foi assinado o Tratado de Simulambuco, em 1885, que estabeleceu o protetorado português sobre Cabinda. É um ponto de grande significado histórico e cultural.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/museuca.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Museu Regional de Cabinda</h3>
+                    <p>Este museu preserva e expõe a rica herança cultural da região, com destaque para artefactos tradicionais, objetos históricos e informações sobre os diferentes grupos étnicos locais.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/futila.jpg"alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Praia da Fútila</h3>
+                    <p>Uma das praias mais conhecidas de Cabinda, a Praia da Fútila é famosa pelas suas águas calmas e areia clara. É um local apreciado para lazer, piqueniques e caminhadas à beira-mar.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/landana.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Praia de Lândana</h3>
+                    <p>Com uma beleza natural marcante, a Praia da Landana oferece um ambiente tranquilo e paisagens deslumbrantes. É ideal para relaxar e aproveitar a vista sobre o oceano Atlântico.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+        </div>
+    </div>
+    
+    <!-- quinto Slider -->
+    <div class="slider-container" id="slider5">
+      <h2>Cuando</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/mavinga.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Parque Nacional do Mavinga</h3>
+                    <p>Parque Nacional de Mavinga 
+Localizado na província do Cuando Cubango, o Parque Nacional de Mavinga é uma das maiores áreas protegidas de Angola. Rico em biodiversidade, abriga espécies como elefantes, leões, leopardos e várias aves raras. O parque também tem vastas savanas, florestas abertas e rios, sendo essencial para a preservação ambiental e o ecoturismo.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/luenge.gif" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Parque Nacional de Luenge-Luiana</h3>
+                    <p>Parque Nacional de Luengue-Luiana 
+Este parque faz fronteira com a Namíbia e integra a área transfronteiriça do Kavango-Zambeze (KAZA). É um santuário para a vida selvagem, com destaque para elefantes, búfalos, hipopótamos e várias espécies de antílopes. Sua paisagem é marcada por rios, zonas húmidas e florestas, sendo ideal para safáris e turismo sustentável.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+    
+    <!-- sexto Slider -->
+    <div class="slider-container" id="slider6">
+      <h2>Cubango</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/okavango.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Okavango</h3>
+                    <p>Rio que nasce no Cuando Cubango, berço do famoso Delta; rica fauna e paisagens naturais.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/rei.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Estátua do Rei Tchinhama Mwene Vunongue</h3>
+                    <p>Homenagem a um rei tradicional Mbunda, símbolo cultural de Menongue.</p>
+                </div>
+            </div>
+            </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+        <!-- sétimo Slider -->
+    <div class="slider-container" id="slider7">
+      <h2>Cuanza Norte</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/massangano.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Fortaleza de Massangano</h3>
+                    <p>Construída pelos portugueses no século XVI, a fortaleza foi um importante ponto militar durante a colonização e nas guerras contra os reinos locais. Fica à margem do Rio Kwanza e representa um marco histórico da resistência angolana e da presença colonial.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/cambambe.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Fortaleza de Cambambe</h3>
+                    <p>Situada próxima da barragem de Cambambe, esta fortaleza também remonta ao período colonial e serviu como ponto estratégico de defesa. É símbolo da arquitetura militar portuguesa e da luta pelo controlo do interior do país.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/camabatela.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Igreja de Camabatela</h3>
+                    <p>Localizada na vila de Camabatela, é uma das igrejas históricas da província, com traços coloniais. É um centro religioso importante para a comunidade local e guarda parte da memória cultural da região.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/kwanza.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Rio Kwanza-Quilemba</h3>
+                    <p>O Rio Kwanza, no trecho de Quilemba, é uma das principais riquezas naturais da província. Serve como fonte de água, pesca e lazer, além de ter um valor simbólico e histórico para Angola.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/kilombo.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Jardim do Quilombo</h3>
+                    <p>Espaço natural de lazer e convívio social, o Jardim do Quilombo é procurado por moradores e visitantes para piqueniques, caminhadas e momentos de descanso. Contribui para o embelezamento urbano e qualidade de vida local.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
+        </div>
+    </div>
+    
+    
+    
+    <!-- oitavo Slider -->
+    <div class="slider-container" id="slider8">
+      <h2>Cuanza Sul</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/sassa.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Grutas da Sassa</h3>
+                    <p>Localizadas perto da cidade do Sumbe, são formações rochosas naturais com túneis e cavernas que encantam os visitantes pela beleza e mistério. Ideal para turismo de aventura e exploração.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/binga.jpg">
+                <div class="slide-content">
+                    <h3>Cachoeira do Binga</h3>
+                    <p>Uma impressionante queda-d'água localizada na localidade do Binga. Rodeada por vegetação, é um ótimo ponto para descanso, piqueniques e contacto com a natureza.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/sumbe.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Praia do Sumbe</h3>
+                    <p>Situada na capital provincial, é uma das praias mais visitadas, com areias claras e águas calmas. Ideal para banhos de mar, passeios e momentos relaxantes.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/conceicao.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Catedral do Sumbe Nossa Senhora da Conceição</h3>
+                    <p>Um dos símbolos religiosos da província, com arquitetura imponente e importância histórica. É ponto de fé e também de interesse cultural.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/portoamboim.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Praias de Porto Amboim</h3>
+                    <p>Conhecidas pela sua beleza natural e tranquilidade. A zona costeira é excelente para pesca, banhos e turismo ecológico, sendo um destino popular entre turistas e locais.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
+        </div>
+    </div>
+    
+    <!-- nono Slider -->
+    <div class="slider-container" id="slider9">
+      <h2>Cunene</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/mandume.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Memorial Rei Mandume</h3>
+                    <p>Localizado em Ondjiva, o memorial homenageia o rei Mandume ya Ndemufayo, um dos maiores líderes da resistência africana contra o colonialismo. É um símbolo de coragem e luta pela liberdade do povo ovambo.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/mupa.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Parque Nacional da Mupa</h3>
+                    <p>Criado para proteger a fauna e flora locais, este parque é lar de várias espécies de animais e aves. Embora ainda pouco explorado, tem grande valor ecológico e potencial turístico.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/ruacana.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Quedas de Ruacaná</h3>
+                    <p>Estas quedas d’água do rio Cunene, na fronteira com a Namíbia, são um espetáculo natural impressionante, com forte potencial turístico e energético. São uma das maiores atrações naturais da região.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+        </div>
+    </div>
+    
+    <!-- décimo Slider -->
+    <div class="slider-container" id="slider10">
+      <h2>Huambo</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/Sjose.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Catedral de São José</h3>
+                    <p>Localizada no centro da cidade do Huambo, é uma das mais belas construções religiosas da província, destacando-se pela sua arquitetura imponente e importância espiritual para a comunidade católica.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/Murro.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Morro do Moco</h3>
+                    <p>É o ponto mais alto de Angola, com cerca de 2.620 metros de altitude. É muito procurado para turismo ecológico e trilhas, oferecendo vistas deslumbrantes da região montanhosa.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/rei.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Estatua do Rei Ekuikui II,</h3>
+                    <p>Um dos símbolos da cultura Ovimbundu, a estátua homenageia o rei Ekuikui II, conhecido pela sua sabedoria e liderança. É um marco histórico e cultural da cidade do Huambo.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/cultura.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Jardim da Cultura</h3>
+                    <p>Espaço de lazer e convivência, o jardim promove atividades culturais, eventos artísticos e momentos de descanso para os habitantes e visitantes da cidade.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/caala.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Santuário da Nossa Senhora do Monte Caala</h3>
+                    <p>Local de grande devoção religiosa, o santuário atrai peregrinos de várias partes do país, sendo um espaço espiritual e de contemplação, com paisagens tranquilas ao redor.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
+        </div>
+    </div>
+    
+    <!-- décimo-primeiro Slider -->
+    <div class="slider-container" id="slider11">
+      <h2>Huíla</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/cascata.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Cascata da Estação Zootécnica de Humpata</h3>
+                    <p>Uma bela queda de água situada na Humpata, rodeada por vegetação e trilhas naturais. Ideal para passeios ecológicos e relaxamento.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/monte.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Santuário Nossa Senhora do Monte</h3>
+                    <p>Local de peregrinação religiosa localizado num monte com vista para a cidade do Lubango. O santuário atrai fiéis e turistas pela sua beleza e espiritualidade.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/cristorei.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Cristo Rei do Lubango</h3>
+                    <p>Uma das maiores estátuas de Cristo em África, situada no topo de uma colina. Oferece uma vista panorâmica do Lubango e é um dos símbolos da cidade.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/regionalm.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Museu Regional da Huíla</h3>
+                    <p>Espaço que preserva a história, cultura e tradições da região sul de Angola. Exibe artefatos históricos, fósseis, peças etnográficas e objetos culturais.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/serraldaleba.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Serra da Leba</h3>
+                    <p>Famosa pela sua estrada sinuosa em zigue-zague com paisagens espetaculares. É uma das rotas mais bonitas e fotografadas de Angola.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/tundava.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Fenda da Tundavala</h3>
+                    <p>Uma enorme falha geológica com penhascos de até 2.200 metros de altitude. Um dos lugares mais impressionantes da Huíla, oferecendo vistas deslumbrantes e clima fresco.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/bimbe.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Fenda do Bimbe</h3>
+                    <p>Outro ponto natural de grande beleza, com formações rochosas únicas e áreas de observação. Menos conhecido que a Tundavala, mas igualmente encantador.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
+            <div class="dot" data-index="5"></div>
+            <div class="dot" data-index="6"></div>
+        </div>
+    </div>
+    
+        <!-- vigésimo primeiro Slider -->
+    <div class="slider-container" id="slider21">
+      <h2>Icolo e Bengo</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/caboledo.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Praia do Cabo Ledo</h3>
+                    <p>Cabo Ledo é uma das praias mais famosas e belas de Angola. É ideal para surf, acampamentos e lazer em família, com areias claras, mar calmo e paisagens naturais encantadoras..</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/kissama.webp" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Parque Nacional da Quiçama</h3>
+                    <p>É uma das maiores áreas protegidas do país. Possui uma grande diversidade de fauna e flora, incluindo elefantes, zebras, girafas e aves. É um destino ideal para safáris e contacto direto com a natureza.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/muxima.webp" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Santuário da Muxima</h3>
+                    <p>Localizado na província do Quiçama, o Santuário da Máxima é um espaço religioso e de peregrinação dedicado à fé católica. É conhecido por atrair fiéis que buscam momentos de reflexão espiritual e conexão com a fé.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+        </div>
+    </div>
+    
+    <!-- décimo-segundo Slider -->
+    <div class="slider-container" id="slider12">
+      <h2>Luanda (capital)</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/cabo.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Ilha do Cabo (Ilha de Luanda)</h3>
+                    <p>Um dos destinos mais populares da cidade, conhecida pelas suas praias, restaurantes e vida noturna. Ideal para lazer, banhos de sol e mar.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/naturalm.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Museu de História Natural</h3>
+                    <p>Localizado no centro da cidade, exibe uma rica coleção de animais empalhados, fósseis e minerais, focando na biodiversidade angolana.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/escravatura.webp" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Museu da Escravatura</h3>
+                    <p>Situado na zona da Cruz, relata a história do tráfico de escravos em Angola. Possui objetos, documentos e uma capela usada na época da escravidão.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/antropologia.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Museu Nacional de Antropologia</h3>
+                    <p>Apresenta a diversidade cultural das etnias angolanas, com trajes tradicionais, instrumentos musicais, utensílios e artefactos culturais.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/moeda.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Museu da Moeda</h3>
+                    <p>Dedicado à história monetária de Angola. Possui moedas, notas e informações sobre os sistemas financeiros ao longo do tempo.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/sagrada.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Igreja da Sagrada Família</h3>
+                    <p>Uma das igrejas católicas mais importantes de Luanda, com arquitetura marcante e um papel ativo nas atividades religiosas da cidade.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/fortaleza.webp" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Fortaleza de São Miguel</h3>
+                    <p>Construída no século XVI pelos portugueses, oferece uma vista panorâmica da baía de Luanda. Possui canhões, relíquias militares e funciona como museu de história.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/palacio.webp" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Palácio de Ferro</h3>
+                    <p>Estrutura metálica atribuída a Gustave Eiffel. Um exemplo único de arquitetura, hoje reabilitado e aberto ao público como espaço cultural.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
+            <div class="dot" data-index="5"></div>
+            <div class="dot" data-index="6"></div>
+            <div class="dot" data-index="7"></div>
+        </div>
+    </div>
+    
+    <!-- decimo-terceiro Slider -->
+    <div class="slider-container" id="slider13">
+      <h2>Lunda Norte</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/carumbo.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Lagoa Carumbo/h3>
+                    <p>Localizada no município do Cuango, é uma das belezas naturais mais emblemáticas da região. Cercada por vegetação densa e montanhas, possui grande valor ecológico, paisagístico e espiritual para as comunidades locais.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/dundo.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Museu Etnográfico do Dundo</h3>
+                    <p>Situado na cidade do Dundo, este museu é um dos mais importantes de Angola. Exibe peças que retratam a cultura dos povos da região, especialmente da etnia tchokwe, com máscaras, esculturas, instrumentos musicais e utensílios tradicionais. É um centro de preservação da identidade cultural local.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+    
+    <!-- décimo-quarto Slider -->
+    <div class="slider-container" id="slider14">
+      <h2>Lunda Sul</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/riochiumbe.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Quedas do Rio Chiumbe</h3>
+                    <p>Localizadas nas proximidades da cidade de Saurimo, são um impressionante espetáculo natural. A força das águas caindo forma uma paisagem deslumbrante, sendo ideal para turismo ecológico e contemplativo..</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/catedrals.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Sé Catedral de Saurimo</h3>
+                    <p>É a principal igreja católica da cidade de Saurimo. Possui uma arquitetura simples, mas imponente, sendo um espaço de grande importância religiosa e cultural para a comunidade.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/lourdes.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Igreja Nossa Senhora de Lourdes</h3>
+                    <p>Esta igreja é um dos marcos históricos de Saurimo. Dedicada à padroeira Nossa Senhora de Lourdes, destaca-se pela tranquilidade e pelo valor espiritual que representa para os fiéis locais.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+        </div>
+    </div>
+    
+    <!-- décimo-quinto Slider -->
+    <div class="slider-container" id="slider15">
+      <h2>Malanje</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/kalan.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Quedas de Kalandula</h3>
+                    <p>São as maiores e mais impressionantes quedas d’água de Angola, com cerca de 105 metros de altura. Estão entre as maiores da África e oferecem uma paisagem de tirar o fôlego, sendo um dos principais cartões-postais do país.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/musseleje.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Cascatas de Musseléje</h3>
+                    <p>Localizadas na zona do município de Kiwaba Nzoji, são menos conhecidas, mas encantadoras. Suas águas cristalinas e ambiente natural preservado tornam o local ideal para passeios tranquilos e contemplação da natureza.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/pungo.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Pedras Negras de Pungo Andongo</h3>
+                    <p>Formações rochosas gigantescas e misteriosas, com formatos curiosos que guardam lendas da história angolana. O local também é conhecido por ter sido um dos refúgios da Rainha Njinga Mbandi.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/cangandala.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Parque Nacional de Cangandala</h3>
+                    <p>É o menor parque nacional de Angola, mas extremamente importante por abrigar a Palanca Negra Gigante, espécie rara e símbolo nacional. O parque oferece biodiversidade e oportunidades para turismo ecológico.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/rainha.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Túmulo da Rainha Njinga Mbandi</h3>
+                    <p>Local histórico e cultural que presta homenagem à grande rainha guerreira que resistiu à colonização portuguesa. O túmulo está situado em território que ela governou e é um símbolo de resistência e liderança.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+            <div class="dot" data-index="4"></div>
+        </div>
+    </div>
+    
+    <!-- décimo-sexto Slider -->
+    <div class="slider-container" id="slider16">
+      <h2>Moxico</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/cameia.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Parque Nacional da Cameia</h3>
+                    <p>É um dos maiores parques nacionais de Angola, com vasta savana, lagoas e rica biodiversidade. Abriga várias espécies de animais e aves, sendo um importante destino para ecoturismo e preservação ambiental.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/luena.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Igreja Sacalumbo Nossa Senhora das Vitórias do Luena</h3>
+                    <p>Um dos principais templos religiosos da cidade do Luena, é conhecida por sua arquitetura simples e significado espiritual. Representa um ponto de encontro para fiéis e espaço de culto importante na região.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/monumento.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Monumento da Paz</h3>
+                    <p>Localizado na cidade do Luena, marca o fim oficial da guerra civil em Angola, simbolizando reconciliação e união nacional. É um ponto de grande valor histórico e patriótico para o país.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+        </div>
+    </div>
+    
+    <!-- décimo-sétimo Slider -->
+    <div class="slider-container" id="slider17">
+      <h2>Moxico Leste</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/diolo.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Lago Diolo</h3>
+                    <p>O Lago Dilolo é o maior lago de águas doces em Angola, fica localizado no município de Luacano. Além de sua beleza imensurável o Dilolo é um lago de mitos e lendas</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/zamb.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Alto Zambeze</h3>
+                    <p>No Alto Zambeze surge, para além de uma parte que é extensão da pene planície de relevo suave do centro leste, uma linha de elevações (Calunda) com mais de 1500 metros de altitude, a mais notável de toda a província, onde se encontram rápidos e cachoeiras, realçando-se o belo cenário paisagístico proporcionado pelas Quedas do Luizabo</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+    
+    <!-- décimo-oitavo Slider -->
+    <div class="slider-container" id="slider18">
+      <h2>Namibe</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/arco.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Lagoa dos Arcos</h3>
+                    <p>Um local natural de grande beleza, caracterizado por formações rochosas em forma de arcos sobre uma lagoa serena. É ideal para apreciação da natureza e momentos de lazer ao ar livre.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/rocha.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>A Rocha</h3>
+                    <p>Conhecida localmente, é uma formação rochosa com vista panorâmica, frequentemente visitada para caminhadas, contemplação e descanso. O nome refere-se à imponência da rocha na paisagem da região.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/negro.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Quedas do Monte Negro</h3>
+                    <p>Cachoeiras localizadas numa zona de relevo montanhoso, oferecendo um espetáculo visual com águas cristalinas. São procuradas por amantes da natureza e trilhas.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/well.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Welwitschia Mirabilis</h3>
+                    <p>Planta rara do deserto, encontrada em algumas áreas do Moxico. É uma espécie única, símbolo de resistência, podendo viver por centenas de anos, despertando interesse científico e ecológico.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+        </div>
+    </div>
+    
+    <!-- décimo-nono Slider -->
+    <div class="slider-container" id="slider19">
+      <h2>Uíge</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/nzenzo.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Grutas do Nzezo</h3>
+                    <p>Localizadas nas proximidades da cidade do Uíge, as Grutas do Nzezo são formações naturais de grande beleza, com galerias subterrâneas e estalactites. São ideais para exploração e estudo geológico, além de serem ponto de interesse turístico e cultural.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/beu.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Reserva Florestal do Beu</h3>
+                    <p>Uma importante área de conservação ambiental, rica em biodiversidade. A reserva abriga várias espécies de fauna e flora típicas da região, sendo um espaço essencial para a pesquisa científica, ecoturismo e preservação ambiental.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+    
+    <!-- vigésimo Slider -->
+    <div class="slider-container" id="slider20">
+      <h2>Zaire</h2>
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/congo.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Museu dos Reis do Congo</h3>
+                    <p>Localizado em M'banza Kongo, o museu preserva a história do antigo Reino do Congo, com objetos, trajes e relíquias dos reis. É um ponto de referência cultural que ajuda a entender a importância histórica da região.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/kuli.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Kulumbimbi(Ruínas da Catedral de São Salvador do Congo)</h3>
+                    <p>Também em M'banza Kongo, Kulumbimbi é considerada a primeira igreja construída a sul do Saara, no século XV. As ruínas representam um marco da introdução do cristianismo em Angola e são património histórico nacional.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/evua.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Grutas de Zau Evua</h3>
+                    <p>Situadas no município do Cuimba, essas grutas naturais são formações rochosas impressionantes, com túneis e galerias que atraem visitantes interessados em turismo ecológico e de aventura.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+        </div>
+    </div>
+    
+    </section>
+
+    <script>
+      //alternar entre menu e x
+   menu.addEventListener('click', alternar)
+   
+   function alternar() {
+  const img = document.getElementById("menu");
+  if (img.src.includes("imagens/menu.svg")) {
+    img.src = "imagens/x.svg";
+  } else {
+    img.src = "imagens/menu.svg";
+  }
+} 
+     
+       
+       //Função do menu
+       menu.addEventListener('click', mostrar)
+       
+       function mostrar(){
+         if(itens.style.display == 'block'){
+           itens.style.display = 'none'
+         } else {
+           itens.style.display = 'block'
+         }
+       }
+      
+        function createSlider(containerId) {
+    const container = document.getElementById(containerId);
+    const slider = container.querySelector('.slider');
+    const slides = container.querySelectorAll('.slide');
+    const prevBtn = container.querySelector('.btn-prev');
+    const nextBtn = container.querySelector('.btn-next');
+    const dots = container.querySelectorAll('.dot');
+    const progressBar = container.querySelector('.progress-bar');
+    
+    let currentIndex = 0;
+    let slideInterval;
+    let isPlaying = true;
+    const slideCount = slides.length;
+    
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        resetProgressBar();
+    }
+    
+    function goToPrevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateSlider();
+    }
+    
+    function goToNextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateSlider();
+    }
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+    }
+    
+    function startSlideShow() {
+        if (!isPlaying) {
+            isPlaying = true;
+            slideInterval = setInterval(goToNextSlide, 3000);
+            resetProgressBar();
+            animateProgressBar();
+        }
+    }
+    
+    function pauseSlideShow() {
+        if (isPlaying) {
+            isPlaying = false;
+            clearInterval(slideInterval);
+            progressBar.style.width = '0%';
+            progressBar.style.transition = 'none';
+        }
+    }
+    
+    function resetProgressBar() {
+        progressBar.style.width = '0%';
+        progressBar.style.transition = 'none';
+        setTimeout(() => {
+            progressBar.style.transition = 'width 5s linear';
+            if (isPlaying) {
+                animateProgressBar();
+            }
+        }, 10);
+    }
+    
+    function animateProgressBar() {
+        if (isPlaying) {
+            progressBar.style.width = '100%';
+        }
+    }
+    
+    // Inicialização
+    updateSlider();
+    startSlideShow();
+    
+    // Event listeners
+    container.addEventListener('mouseenter', pauseSlideShow);
+    container.addEventListener('mouseleave', startSlideShow);
+    container.addEventListener('touchstart', pauseSlideShow);
+    container.addEventListener('touchend', startSlideShow);
+    
+    prevBtn.addEventListener('click', () => {
+        pauseSlideShow();
+        goToPrevSlide();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        pauseSlideShow();
+        goToNextSlide();
+    });
+    
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            pauseSlideShow();
+            goToSlide(parseInt(dot.getAttribute('data-index')));
+        });
+    });
+}
+
+// Uso:
+document.addEventListener('DOMContentLoaded', function() {
+    createSlider('slider1');
+    createSlider('slider2');
+    createSlider('slider3')
+    createSlider('slider4')
+    createSlider('slider5')
+    createSlider('slider6')
+    createSlider('slider7')
+    createSlider('slider8')
+    createSlider('slider9')
+    createSlider('slider10')
+    createSlider('slider11')
+    createSlider('slider12')
+    createSlider('slider13')
+    createSlider('slider14')
+    createSlider('slider15')
+    createSlider('slider16')
+    createSlider('slider17')
+    createSlider('slider18')
+    createSlider('slider19')
+    createSlider('slider20')
+    createSlider('slider21')
+    // Adicione mais sliders conforme necessário
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    new Slider('slider1'); // ou createSlider('slider1') na abordagem simples
+    new Slider('slider2');
+    new Slider('slider3');
+    new Slider('slider4')
+    // Quantos você precisar
+});
+    </script>
+    
+    <style>
+              /*Animações*/
+        
+        
+.scale-in-tr {
+	-webkit-animation: scale-in-tr 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) ;
+	        animation: scale-in-tr 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) ;
+}
+
+
+
+@-webkit-keyframes scale-in-tr {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+@keyframes scale-in-tr {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+
+
+.heartbeat {
+	-webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+	        animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+
+@-webkit-keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: center center;
+            transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+            transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+            transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+@keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: center center;
+            transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+            transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+            transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+.tracking-in-expand-fwd-top {
+	-webkit-animation: tracking-in-expand-fwd-top 2s ;
+	        animation: tracking-in-expand-fwd-top 2s ;
+}
+
+
+
+@-webkit-keyframes tracking-in-expand-fwd-top {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px) translateY(-500px);
+            transform: translateZ(-700px) translateY(-500px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+            transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand-fwd-top {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px) translateY(-500px);
+            transform: translateZ(-700px) translateY(-500px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0) translateY(0);
+            transform: translateZ(0) translateY(0);
+    opacity: 1;
+  }
+}
+    </style>
+        
+</body>
+</html>

@@ -1,0 +1,246 @@
+@charset="UTF-8";
+
+:root{
+    --cordefundo:#232946;
+    --cinza:#94A1B2;
+    --cinzaclaro:#EFF0F3;
+    --azulescuro:#001858;
+    --azulclaro:#8BD3DD;
+    
+    --fonte-padrao: Arial, Verdana, Helvetica, sans-serif;
+    --fonte-destaque: 'Bebas Neue', cursive;
+}
+
+*{
+    margin:0px;
+    padding:0px;
+}
+
+body{
+    background-color:#FEF6E4;
+    font-family:var(--fonte-padrao);
+}
+
+header{
+    background-image: linear-gradient(to bottom, var(--azulclaro), var(--azulescuro));
+    padding: 37px;
+    min-height: 100px;
+}
+
+header > h1 {
+    font-family:var(--fonte-destaque);
+    color:var(--azulescuro);
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom:20px;
+    text-shadow: 1px 1px 0px;
+}
+
+header > p {
+    margin-bottom:10px;
+    color:var(--cinza);
+    
+}
+
+nav {
+    padding: 10px;
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.192);
+}
+
+nav > a {
+    color: var(--azulclaro);
+    padding: 10px;
+    display: inline;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: .5s;
+}
+
+nav > a:hover {
+    background-color: var(--azulclaro);
+    color: var(--azulescuro);
+    }
+main{
+     text-align:center;
+     margin:20px;
+    }
+#visite{
+    margin:auto;
+    max-width:600px;
+}
+section.redes > p {
+    margin:10px;
+}
+section.redes > h2 {
+    color:var(--cinza);
+    padding:10px;
+    border-radius:15px;
+}
+ul {
+    list-style-type:none;
+}
+
+ul > li > a {
+    margin:20px 10px 20px 0px;
+    text-decoration:none;
+    padding:10px;
+}
+
+ul > li > a > img{
+    border-radius:50%;
+    max-width:15%;
+    border: 3px solid var(--azulclaro);  
+}
+section > div{
+    margin: 20px;
+    max-width: 300px;
+    max-height:500px;
+    display: inline-block;
+}
+
+
+article {
+    background-color:var(--azulclaro);
+    padding:10px;
+    margin:10px;
+    border-radius:15px;
+}
+
+div > img{
+    border: 3px solid var(--azulclaro);
+    max-width: 300px;
+    max-height:500px;
+}
+
+input[type=button], #compra{
+    margin-left: 5px;
+    max-width:30%;
+    border:none;
+    padding:10px;
+    
+}
+
+#compra{
+    background-color:var(--azulclaro);
+    color: var(--cordefundo);
+    text-decoration:none;
+}
+
+#compra:active{
+    border-radius:20px;
+}
+
+#preço{
+    background-color:var(--azulescuro);
+    color: var(--cinzaclaro);
+}
+
+#send{
+    background-color:var(--azulescuro);
+    color: var(--cinzaclaro);
+}
+
+footer{
+    background-color:var(--cinza);
+    padding:20px;
+    text-align:center;
+}
+
+img#icon, img.ico, img#home{
+    margin:0px 10px;
+    border:none;
+    display:none;
+}
+
+img#icon:active{
+    border: 1px solid var(--cinzaclaro);
+}
+
+img.ico:active{
+    border:1px solid var(--cinzaclaro);
+}
+img#home:active{
+    border:1px solid var(--cinzaclaro);
+}
+img.back{
+    margin:10px;
+    border:none;
+    text-align:left;
+}
+img.back:active{
+    border:1px solid var(--azulescuro);
+}
+
+#for{
+    margin:30px;
+    text-align:center;
+    color:var(--azulescuro);
+}
+
+form{
+    margin:auto;
+    padding:20px;
+    background-color:var(--azulclaro); 
+    max-width:600px;  
+}
+
+fieldset{
+    margin:20px 0px;
+    padding:10px;
+    border:1px solid var(--azulescuro) ;
+}
+fieldset > p{
+    margin: 10px 0px;
+}
+legend{
+    text-align:center;
+    font-weight:bold;
+}
+#buttom{
+    text-align:center;
+}
+input[type=submit], input[type=reset]{
+    border:none;
+    padding:8px;
+    margin:5px;
+    font-weight:bold;
+    transition-duration:.2s;
+}
+input[type=reset]:active{
+    background-color:var(--azulescuro);
+    color:var(--azulclaro);
+    border-radius:10px;
+}
+input[type=submit]:active{
+    background-color:var(--azulescuro);
+    color:var(--azulclaro);
+    border-radius:10px;
+}
+@media(max-width:600px){
+
+    nav{
+        background-color:var(--cordefundo);
+        display:none; 
+        position: absolute;
+        z-index:1;
+        margin-top:30px;
+    }
+    nav > a {
+        display:block;
+    }
+    img#icon, img.ico, img#home{
+        display: inline-block;
+    } 
+    #icon{
+        float:left;
+    }   
+    .ico{
+        float: right;
+    }
+    img{
+    border: 3px solid var(--azulclaro);
+    max-width:70%;
+    }
+    
+}

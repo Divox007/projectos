@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div class="slider">
+  <div class="slidess">
+    <img src="imagens/arco.jpg" alt="Imagem 1" />
+    <img src="imagens/kalandula.jpg" alt="Imagem 2" />
+    <img src="imagens/arco.jpg" alt="Imagem 3" />
+  </div>
+</div>
+
+<style>
+.slider {
+  max-width: 800px;
+  overflow: hidden;
+  border-radius:10px;
+}
+
+.slidess {
+  display: flex;
+  width: 80%;
+  animation: slide 9s infinite;
+}
+
+.slidess > img {
+  width: 100%;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% { margin-left: 0%; }
+  33% { margin-left: -100%; }
+  66% { margin-left: -200%; }
+  100% { margin-left: 0%; }
+}
+</style>
+
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img1.jpg" class="d-block w-100">
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Compra</title>
+    <link rel="stylesheet" href="estilo/style.css">
+</head>
+<body>
+    <h1 id="for">Efectuar Compra</h1>
+    <form method="Post" autocompleted="on">
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+        <p><label for="inome">Nome</label>
+        <input type="text" name="nome" id="inome" required autocompleted="nome" placeholder="nome completo"></p>
+        <p>
+        <label for="iimail">E-mail</label>
+        <input type="email" name="imail" id="iimail"></p>
+        <p>
+            <label for="itel">Telefone</label>
+            <input type="tel" name="tel" id="itel" placeholder="+244">
+        </p>
+        </fieldset>
+        <fieldset>
+            <legend>Dados Bancários</legend>
+            <p>
+                <label for="iiban">IBAN</label>
+                <input type="number" name="iban" id="iiban" placeholder="AO06" required>
+            </p>
+            <p>
+                <label for="ivalor">Valor da compra</label>
+                <input type="number" name="valor" id="ivalor" required>
+            </p>
+            <p>
+                <label for="isenha">Senha</label>
+                <input type="senha" name="senha" id="isenha" placeholder="senha de confirmação" required>
+            </p>
+        </fieldset>
+        <p id="buttom">
+            <input type="reset" value="Limpar">
+            <input type="submit" value="Confirmar">
+        </p>
+        <a href="index.html"><img src="icons/arrow-left-circle.svg" alt=""></a>
+    </form>
+    
+</body>
+</html>

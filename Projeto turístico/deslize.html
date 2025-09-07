@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider de Imagens Interativo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 30px auto;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 450px;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .slide:hover .slide-content {
+            transform: translateY(0);
+        }
+
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.5);
+            color: #333;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-prev {
+            left: 20px;
+        }
+
+        .btn-next {
+            right: 20px;
+        }
+
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .dot:hover {
+            background: white;
+        }
+
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            width: 0%;
+            transition: width 0.1s linear;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .slider {
+                height: 350px;
+            }
+            
+            .slide-content {
+                padding: 20px 15px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Primeiro Slider -->
+    <div class="slider-container" id="slider1">
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/kalandula.jpg" alt="Natureza 1">
+                <div class="slide-content">
+                    <h3>Slider 1 - Imagem 1</h3>
+                    <p>Descrição do primeiro slider, primeira imagem.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/arco.jpg" alt="Natureza 2">
+                <div class="slide-content">
+                    <h3>Slider 1 - Imagem 2</h3>
+                    <p>Descrição do primeiro slider, segunda imagem.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+
+    <!-- Segundo Slider -->
+    <div class="slider-container" id="slider2">
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="imagens/kalandula.jpg" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Slider 2 - Imagem 1</h3>
+                    <p>Descrição do segundo slider, primeira imagem.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/arco.jpg" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Slider 2 - Imagem 2</h3>
+                    <p>Descrição do segundo slider, segunda imagem.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imagens/serradaleba.jpg" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Slider 2 - Imagem 3</h3>
+                    <p>Descrição do segundo slider, terceira imagem.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+        </div>
+    </div>
+    
+    <!-- Terceiro Slider -->
+    <div class="slider-container" id="slider3">
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="https://source.unsplash.com/random/800x450?city,1" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Slider 2 - Imagem 1</h3>
+                    <p>Descrição do segundo slider, primeira imagem.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://source.unsplash.com/random/800x450?city,2" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Slider 2 - Imagem 2</h3>
+                    <p>Descrição do segundo slider, segunda imagem.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://source.unsplash.com/random/800x450?city,3" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Slider 2 - Imagem 3</h3>
+                    <p>Descrição do segundo slider, terceira imagem.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+        </div>
+    </div>
+    
+    <!-- quarto Slider -->
+    <div class="slider-container" id="slider4">
+        <div class="progress-bar"></div>
+        <div class="slider">
+            <div class="slide">
+                <img src="https://source.unsplash.com/random/800x450?city,1" alt="Cidade 1">
+                <div class="slide-content">
+                    <h3>Slider 2 - Imagem 1</h3>
+                    <p>Descrição do segundo slider, primeira imagem.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://source.unsplash.com/random/800x450?city,2" alt="Cidade 2">
+                <div class="slide-content">
+                    <h3>Slider 2 - Imagem 2</h3>
+                    <p>Descrição do segundo slider, segunda imagem.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://source.unsplash.com/random/800x450?city,3" alt="Cidade 3">
+                <div class="slide-content">
+                    <h3>Slider 2 - Imagem 3</h3>
+                    <p>Descrição do segundo slider, terceira imagem.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-prev">&lt;</button>
+        <button class="btn btn-next">&gt;</button>
+        
+        <div class="dots-container">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+        </div>
+    </div>
+
+    <script>
+      
+        function createSlider(containerId) {
+    const container = document.getElementById(containerId);
+    const slider = container.querySelector('.slider');
+    const slides = container.querySelectorAll('.slide');
+    const prevBtn = container.querySelector('.btn-prev');
+    const nextBtn = container.querySelector('.btn-next');
+    const dots = container.querySelectorAll('.dot');
+    const progressBar = container.querySelector('.progress-bar');
+    
+    let currentIndex = 0;
+    let slideInterval;
+    let isPlaying = true;
+    const slideCount = slides.length;
+    
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        resetProgressBar();
+    }
+    
+    function goToPrevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateSlider();
+    }
+    
+    function goToNextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateSlider();
+    }
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+    }
+    
+    function startSlideShow() {
+        if (!isPlaying) {
+            isPlaying = true;
+            slideInterval = setInterval(goToNextSlide, 3000);
+            resetProgressBar();
+            animateProgressBar();
+        }
+    }
+    
+    function pauseSlideShow() {
+        if (isPlaying) {
+            isPlaying = false;
+            clearInterval(slideInterval);
+            progressBar.style.width = '0%';
+            progressBar.style.transition = 'none';
+        }
+    }
+    
+    function resetProgressBar() {
+        progressBar.style.width = '0%';
+        progressBar.style.transition = 'none';
+        setTimeout(() => {
+            progressBar.style.transition = 'width 5s linear';
+            if (isPlaying) {
+                animateProgressBar();
+            }
+        }, 10);
+    }
+    
+    function animateProgressBar() {
+        if (isPlaying) {
+            progressBar.style.width = '100%';
+        }
+    }
+    
+    // Inicialização
+    updateSlider();
+    startSlideShow();
+    
+    // Event listeners
+    container.addEventListener('mouseenter', pauseSlideShow);
+    container.addEventListener('mouseleave', startSlideShow);
+    container.addEventListener('touchstart', pauseSlideShow);
+    container.addEventListener('touchend', startSlideShow);
+    
+    prevBtn.addEventListener('click', () => {
+        pauseSlideShow();
+        goToPrevSlide();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        pauseSlideShow();
+        goToNextSlide();
+    });
+    
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            pauseSlideShow();
+            goToSlide(parseInt(dot.getAttribute('data-index')));
+        });
+    });
+}
+
+// Uso:
+document.addEventListener('DOMContentLoaded', function() {
+    createSlider('slider1');
+    createSlider('slider2');
+    createSlider('slider3')
+    createSlider('slider4')
+    // Adicione mais sliders conforme necessário
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    new Slider('slider1'); // ou createSlider('slider1') na abordagem simples
+    new Slider('slider2');
+    new Slider('slider3');
+    new Slider('slider4')
+    // Quantos você precisar
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora básica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form class="calc">
+        <div class="header">
+            <input type="text" id="display" placeholder="00000000" disabled  >
+        </div>
+        <hr>
+        <div>
+            <input type="button" value="7" onclick="addtela('7')">
+            <input type="button" value="8" onclick="addtela('8')">
+            <input type="button" value="9" onclick="addtela('9')">
+            <input type="button" value="+" onclick="addtela('+')">
+        </div>
+        <div>
+            <input type="button" value="4" onclick="addtela('4')">
+            <input type="button" value="5" onclick="addtela('5')">
+            <input type="button" value="6" onclick="addtela('6')">
+            <input type="button" value="-" onclick="addtela('-')">
+        </div>
+        <div>
+            <input type="button" value="1" onclick="addtela('1')">
+            <input type="button" value="2" onclick="addtela('2')">
+            <input type="button" value="3" onclick="addtela('3')">
+            <input type="button" value="*" onclick="addtela('*')">
+        </div>
+        <div>
+            <input type="button" value="0" onclick="addtela('0')">
+            <input type="button" class="limpar" value="C" onclick="limpatela()">
+            <input type="button" class="res" value="=" onclick="res()">
+            <input type="button" value="/" onclick="addtela('/')">
+        </div>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

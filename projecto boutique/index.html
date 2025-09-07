@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Início</title>
+    <link rel="shortcut icon" href="icons/favicon.ico">
+    <link rel="stylesheet" href="estilo/style.css">
+</head>
+<body>
+    <header id="index">
+        <h1>Boutique Bom Look</h1>
+        <p> A melhor qualidade você encontra aqui</p>
+        <img id="icon" src="icons/menu.svg" alt="icone de menu" onclick="clickMenu()">
+        <a href="index.html"><img src="icons/home.svg" alt="" id="home"></a>
+        <img src="icons/search.svg" alt="icone de pesquisa" class="ico">
+        <a href="compra.html"><img src="icons/shopping-cart.svg" alt="" class="ico"></a>
+        <nav id="itens">
+            <a href="index.html">Início</a>
+            <a href="outfits.html">Outfits</a>
+            <a href="acess.html">Acessórios</a>
+            <a href="shoes.html">Calçados</a>
+            <a href="compra.html">Comprar</a>
+            <a href="nos.html">Sobre nós</a>
+        </nav>
+    </header>
+    <main>
+        <section class="social">
+            <h2>Seja bem vindo!</h2>
+            <p>Temos o melhor produto ao melhor preço</p>
+            <div class="same"><img src="imagens/extra02.jpg" alt=""><p><input type="button" value="68.000kz" id="preço"><a href="compra.html" id="compra">comprar</a></p></div>
+            
+            <div class="same">
+                <img src="imagens/extra11.jpg" alt=""><p><input type="button" value="71.000kz" id="preço"><a href="compra.html" id="compra">comprar</a></p>
+            </div>
+            
+            <div>
+                <img src="imagens/extra09.jpg" alt=""><p><input type="button" value="20.000kz" id="preço"><a href="compra.html" id="compra">comprar</a></p>
+            </div>
+            
+            <div>
+                <img src="imagens/extra14.jpg" alt=""><p><input type="button" value="76.000kz" id="preço"><a href="compra.html" id="compra">comprar</a></p>
+            </div>
+        </section>
+        
+        <section class="everywhere">
+            <div>
+                <img src="imagens/extra10.jpg" alt=""><p><input type="button" value="20.000kz" id="preço"><a href="compra.html" id="compra">comprar</a></p>
+            </div>
+            
+            <div>
+                <img src="imagens/extra07.jpg" alt=""><p><input type="button" value="28.000kz" id="preço"><a href="compra.html" id="compra">comprar</a></p>
+            </div>
+            
+            <div>
+                <img src="imagens/extra04.jpg" alt=""><p><input type="button" value="68.000kz" id="preço"><a href="compra.html" id="compra">comprar</a></p>
+            </div>
+            <div>
+                <img src="imagens/extra01.jpg" alt=""><p><input type="button" value="30.000kz" id="preço"><a href="compra.html" id="compra">comprar</a></p>
+            </div>
+            <div>
+                <img src="imagens/outfits/drip08.jpg" alt=""><p><input type="button" value="42.000kz" id="preço"><a href="compra.html" id="compra">comprar</a></p>
+             </div>   
+            
+            
+        </section>
+    </main>
+    <a href="#index"><img src="icons/arrow-up-circle.svg" alt="" class="back"></a>
+ 
+       <footer>
+        <p>&copy 2024 Bom Look - Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function clickMenu() {
+        if(itens.style.display == 'block'){
+            itens.style.display = 'none'
+        } 
+        else {
+            itens.style.display = 'block'
+        }
+        }
+    </script>
+</body>
+</html>

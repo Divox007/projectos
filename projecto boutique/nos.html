@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Fale connosco</title>
+    <link rel="stylesheet" href="estilo/style.css">
+</head>
+<body>
+    <header>
+        <h1>Boutique Bom Look</h1>
+        <p>A melhor qualidade você encontra aqui</p>
+         <img id="icon" src="icons/menu.svg" alt="icone de menu" onclick="clickMenu()">
+         <a href="index.html"><img src="icons/home.svg" alt="" id="home"></a>
+         <img src="icons/search.svg" alt="icone de pesquisa" class="ico">
+        <a href="compra.html"><img src="icons/shopping-cart.svg" alt="" class="ico"></a>
+        <nav id="itens">
+            <a href="index.html">Início</a>
+            <a href="outfits.html">Outfits</a>
+            <a href="acess.html">Acessórios</a>
+            <a href="shoes.html">Calçados</a>
+            <a href="compra.html">Comprar</a>
+            <a href="nos.html">Sobre nós</a>
+        </nav>
+    </header>
+    <main id="visite">
+        <section class="redes">
+       <h2>
+           Nós cuidamos do seu look
+       </h2>
+       <article class="review">
+       <p>A Boutique Bom Look está localizada no Zango 3 </p>
+       <p>A nossa loja é inteiramente masculina, aproveite a melhor qualidade ao melhor preço</p></article>
+       <h3>Entre em contacto connosco apartir das nossas redes sociais</h3>
+       <ul>
+           <li><a href=""><img src="imagens/face.jpg" alt=""></a></li>
+           <li><a href=""><img src="imagens/insta.jpg" alt=""></a></li>
+           <li><a href=""><img src="imagens/what.jpg" alt=""></a></li>
+       </ul>
+       </sectio>
+       <article>
+       <h3>O que achou dos nossos serviços?</h3>
+       <p>Comentários</p>
+       <p><textarea name="coment" id="icom" cols="20" rows="6"> </textarea></p>
+       <p><input type="button" id="preço" value="Enviar"></p>
+       </article>
+    </main>
+    <footer>
+        <p>&copy 2024 Bom Look - Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function clickMenu() {
+        if(itens.style.display == 'block'){
+            itens.style.display = 'none'
+        } 
+        else {
+            itens.style.display = 'block'
+        }
+        }
+    </script>
+</body>
+</html>
