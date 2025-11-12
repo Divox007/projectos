@@ -7,6 +7,11 @@ function addtela(value) {
     tela.value += value;
 }
 
+//Para limpar apenas úlimo elemento
+function limp(){
+     tela.value = tela.value.slice(0, -1)
+}
+
 //Para limpar a tela
 function limpatela() {
     tela.value = ''
